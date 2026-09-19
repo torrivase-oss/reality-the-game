@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>REALITY — THE GAME</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#17121b;color:#f8f4f8;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.wrap{max-width:720px;margin:auto;padding:18px}.hero,.card{background:#241b2b;border:1px solid #443249;border-radius:22px;padding:18px;margin-bottom:12px}
+.hero{background:linear-gradient(135deg,#211522,#302033);position:relative;overflow:hidden}
+h1{margin:0;font-size:30px;line-height:.95}.muted{color:#b9aabd;font-size:12px}.money{font-size:36px;font-weight:800;margin-top:18px}
+.bar{height:9px;background:#100d13;border-radius:20px;overflow:hidden;margin-top:8px}.fill{height:100%;width:0;background:linear-gradient(90deg,#db2777,#f9a8d4);transition:.35s}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:12px}.stat{text-align:center;background:#241b2b;border:1px solid #443249;border-radius:15px;padding:11px}.stat b{display:block;font-size:19px}.stat span{font-size:10px;color:#b9aabd}
+.title{display:flex;justify-content:space-between;align-items:center;font-weight:750;margin-bottom:12px}
+.avatar{height:155px;border-radius:17px;background:radial-gradient(circle at 50% 20%,#f9a8d4 0 4px,transparent 5px),linear-gradient(160deg,#19131d,#38233b);display:grid;place-items:center;position:relative}
+.person{font-size:76px}.crystal{position:absolute;top:12px;font-size:30px;color:#f9a8d4;filter:drop-shadow(0 0 9px #ec4899);animation:pulse 1.8s infinite}@keyframes pulse{50%{transform:translateY(-5px) scale(1.08)}}
+.quest{display:flex;gap:11px;align-items:center;padding:12px 0;border-bottom:1px solid #3b2d40}.quest:last-child{border:0}.icon{width:38px;height:38px;border-radius:12px;background:#332337;display:grid;place-items:center;flex:none}.qmain{flex:1}.qname{font-size:13px;font-weight:650}.xp{font-size:10px;color:#f9a8d4;margin-top:3px}
+button{border:0;border-radius:12px;padding:10px 12px;background:#3a293e;color:#fff;font-weight:700;min-height:42px}button.primary{background:#ec4899}button:disabled{opacity:.4}
+.products{display:grid;grid-template-columns:1fr 1fr;gap:8px}.product{background:#1d1622;border:1px solid #3b2d40;border-radius:14px;padding:12px}.product b{font-size:13px}.product small{display:block;color:#b9aabd;margin-top:4px}.product button{width:100%;margin-top:9px;font-size:11px}
+.map{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}.level{border:1px solid #463448;border-radius:12px;padding:9px 3px;text-align:center;font-size:10px;color:#aa9aaa}.level.done{background:#35213b;color:#f9a8d4;border-color:#8b4b79}
+.actions{display:flex;gap:8px}.actions button{flex:1}.msg{text-align:center;min-height:18px;margin-top:10px}
+@media(max-width:430px){.stats{grid-template-columns:repeat(2,1fr)}.products{grid-template-columns:1fr}.map{grid-template-columns:repeat(3,1fr)}}
+</style>
+</head>
+<body>
+<div class="wrap" id="app">
+<section class="hero"><h1>REALITY<br>THE GAME</h1><div class="muted">30 DAYS · THE GAME OF CREATION</div><div class="money" id="money">0 ₽</div><div class="muted">из 1 000 000 ₽</div><div class="bar"><div class="fill" id="fill"></div></div></section>
+<div class="stats"><div class="stat"><b id="leads">0</b><span>LEADS</span></div><div class="stat"><b id="calls">0</b><span>CALLS</span></div><div class="stat"><b id="offers">0</b><span>OFFERS</span></div><div class="stat"><b id="sales">0</b><span>SALES</span></div></div>
+<section class="card"><div class="title"><span>YOUR AVATAR</span><span id="day">DAY 1 / 30</span></div><div class="avatar"><div class="crystal">◆</div><div class="person">♙</div></div><div class="muted" style="margin-top:10px">VICTORIA · LEVEL <span id="level">1</span> · <span id="xp">0</span> XP</div></section>
+<section class="card"><div class="title"><span>⚡ TODAY'S QUESTS</span><span id="done">0 / 3</span></div>
+<div class="quest"><div class="icon">✦</div><div class="qmain"><div class="qname">CREATE — контент с CTA</div><div class="xp">+100 XP</div></div><button data-q="0">Выполнить</button></div>
+<div class="quest"><div class="icon">♧</div><div class="qmain"><div class="qname">ATTRACT — 5 контактов</div><div class="xp">+120 XP · +5 LEADS</div></div><button data-q="1">Выполнить</button></div>
+<div class="quest"><div class="icon">☽</div><div class="qmain"><div class="qname">SHADOW QUEST — сделать то, что откладываешь</div><div class="xp">+180 XP · +COURAGE</div></div><button data-q="2">Выполнить</button></div>
+</section>
+<section class="card"><div class="title"><span>💎 PRODUCT WORLD</span></div><div class="products">
+<div class="product"><b>SESSION</b><small>3 333 ₽</small><button data-sale="3333">Продажа</button></div>
+<div class="product"><b>ENERGY DIAGNOSTICS</b><small>25 000 ₽</small><button data-sale="25000">Продажа</button></div>
+<div class="product"><b>PERSONAL WORK</b><small>100 000 ₽</small><button data-sale="100000">Продажа</button></div>
+<div class="product"><b>AUTOAURA</b><small>твой profit ≈ 50K</small><button data-sale="50000">Продажа</button></div>
+<div class="product"><b>REALITY MANAGEMENT</b><small>6 000 ₽</small><button data-sale="6000">Продажа</button></div>
+<div class="product"><b>FOCUS GROUP</b><small>2 500 ₽</small><button data-sale="2500">Участник</button></div>
+</div></section>
+<section class="card"><div class="title"><span>🌌 WORLD MAP</span></div><div class="map"><div class="level" data-level="100000">100K</div><div class="level" data-level="250000">250K</div><div class="level" data-level="500000">500K</div><div class="level" data-level="750000">750K</div><div class="level" data-level="1000000">1M BOSS</div></div></section>
+<div class="actions"><button class="primary" id="next">Завершить день →</button><button id="reset">Reset</button></div><div class="muted msg" id="msg"></div>
+</div>
+<script>
+(()=>{const $=s=>document.querySelector(s),root=document.getElementById('app');let s={money:0,leads:0,calls:0,offers:0,sales:0,xp:0,day:1,done:[]};const fmt=n=>new Intl.NumberFormat('ru-RU').format(n)+' ₽';
+function render(){money.textContent=fmt(s.money);fill.style.width=Math.min(100,s.money/10000)+'%';leads.textContent=s.leads;calls.textContent=s.calls;offers.textContent=s.offers;sales.textContent=s.sales;xp.textContent=s.xp;day.textContent=`DAY ${s.day} / 30`;level.textContent=Math.floor(s.xp/500)+1;done.textContent=`${s.done.length} / 3`;root.querySelectorAll('[data-q]').forEach(b=>{const i=+b.dataset.q;b.disabled=s.done.includes(i);b.textContent=s.done.includes(i)?'✓ Готово':'Выполнить'});root.querySelectorAll('[data-level]').forEach(e=>e.classList.toggle('done',s.money>=+e.dataset.level))}
+root.querySelectorAll('[data-q]').forEach(b=>b.addEventListener('click',()=>{let i=+b.dataset.q;if(s.done.includes(i))return;s.done.push(i);s.xp+=[100,120,180][i];if(i===1)s.leads+=5;msg.textContent=['Контент создан.','5 новых контактов добавлены.','SHADOW QUEST пройден.'][i];render()}));
+root.querySelectorAll('[data-sale]').forEach(b=>b.addEventListener('click',()=>{let v=+b.dataset.sale;s.money+=v;s.sales++;s.offers++;s.xp+=200;msg.textContent=`Продажа закрыта: +${fmt(v)} · +200 XP`;render()}));
+next.addEventListener('click',()=>{if(s.day<30){s.day++;s.done=[];s.xp+=50;msg.textContent='Новый день. Игра продолжается.'}else msg.textContent='30 дней завершены.';render()});
+reset.addEventListener('click',()=>{s={money:0,leads:0,calls:0,offers:0,sales:0,xp:0,day:1,done:[]};msg.textContent='Игра начата заново.';render()});render()})();
+</script>
+</body></html>
